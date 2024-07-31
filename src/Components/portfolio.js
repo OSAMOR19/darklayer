@@ -21,45 +21,47 @@ const HeroPage = () => {
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '2rem 0',
   };
 
   const textStyle = {
     fontFamily: 'Inter, sans-serif',
-    fontSize: '96px',
+    fontSize: 'clamp(36px, 8vw, 96px)',
     fontWeight: 800,
-    lineHeight: '116.18px',
+    lineHeight: '1.2',
     textAlign: 'center',
     background: 'linear-gradient(45deg, #000E12 0%, #063D4F 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    marginBottom: '2rem',
+    marginBottom: '1.5rem',
   };
 
   const subTextStyle = {
     fontFamily: 'Inter, sans-serif',
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 3vw, 18px)',
     fontWeight: 400,
-    lineHeight: '28px',
+    lineHeight: '1.6',
     textAlign: 'center',
     color: '#FFFFFF',
     maxWidth: '600px',
-    margin: '0 auto 2rem',
+    margin: '0 auto 1.5rem',
   };
 
   const buttonStyle = {
     padding: '10px 20px',
-    fontSize: '18px',
+    fontSize: 'clamp(14px, 2.5vw, 18px)',
     fontWeight: 600,
     border: 'none',
+    margin: '0.5rem',
   };
 
   const chainContainerStyle = {
     position: 'relative',
-    height: '80px',
+    height: 'clamp(60px, 15vw, 80px)',
     marginTop: '2rem',
   };
 
@@ -72,8 +74,8 @@ const HeroPage = () => {
       left: `${x}%`,
       top: `${y}%`,
       transform: 'translate(-50%, -50%)',
-      width: '30px',
-      height: '30px',
+      width: 'clamp(20px, 5vw, 30px)',
+      height: 'clamp(20px, 5vw, 30px)',
     };
   };
 
@@ -108,7 +110,7 @@ const HeroPage = () => {
             >
               <Button
                 variant="primary"
-                style={{ ...buttonStyle, backgroundColor: '#0F4A5D', marginRight: '10px' }}
+                style={{ ...buttonStyle, backgroundColor: '#0F4A5D' }}
               >
                 Explore Dark Apps
               </Button>

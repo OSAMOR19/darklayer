@@ -29,13 +29,13 @@ const NavBar = () => {
   const activeNavLinkStyle = {
     ...navLinkStyle,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    color: '#FFFFFF',
+    color: '#121212',
   };
 
   const buttonStyle = {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderColor: 'rgba(255, 255, 255, 0.2)',
-    color: '#FFFFFF',
+    color: '#121212',
     borderRadius: '20px',
     padding: '8px 15px',
   };
