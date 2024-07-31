@@ -1,0 +1,147 @@
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import Background from "../Images/darkbg.svg";
+import chain1 from "../Images/chainlogo1.svg";
+import chain2 from "../Images/chainlogo2.svg";
+import chain3 from "../Images/chainlogo3.svg";
+import chain4 from "../Images/chainlogo4.svg";
+import chain5 from "../Images/chainlogo5.svg";
+import chain6 from "../Images/chainlogo6.svg";
+import chain7 from "../Images/chainlogo7.svg";
+import { motion } from 'framer-motion';
+
+const HeroPage = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const heroStyle = {
+    backgroundImage: `url(${Background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const textStyle = {
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '96px',
+    fontWeight: 800,
+    lineHeight: '116.18px',
+    textAlign: 'center',
+    background: 'linear-gradient(45deg, #000E12 0%, #063D4F 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    marginBottom: '2rem',
+  };
+
+  const subTextStyle = {
+    fontFamily: 'Inter, sans-serif',
+    fontSize: '18px',
+    fontWeight: 400,
+    lineHeight: '28px',
+    textAlign: 'center',
+    color: '#FFFFFF',
+    maxWidth: '600px',
+    margin: '0 auto 2rem',
+  };
+
+  const buttonStyle = {
+    padding: '10px 20px',
+    fontSize: '18px',
+    fontWeight: 600,
+    border: 'none',
+  };
+
+  const chainContainerStyle = {
+    position: 'relative',
+    height: '80px',
+    marginTop: '2rem',
+  };
+
+  const chainStyle = (index, totalChains) => {
+    const angle = (index / (totalChains - 1)) * Math.PI;
+    const x = 50 + 25 * Math.cos(angle);
+    const y = 50 + 25 * Math.sin(angle);
+    return {
+      position: 'absolute',
+      left: `${x}%`,
+      top: `${y}%`,
+      transform: 'translate(-50%, -50%)',
+      width: '30px',
+      height: '30px',
+    };
+  };
+
+  const chainImages = [chain1, chain2, chain3, chain4, chain5, chain6, chain7];
+
+  return (
+    <div style={heroStyle}>
+      <Container>
+        <Row className="justify-content-center">
+          <Col xs={12} className="text-center">
+            <motion.h1
+              style={textStyle}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              DEFI DARK LAYER
+            </motion.h1>
+            <motion.p
+              style={subTextStyle}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              If everything happened in the shadow, in the dark where the light is forbidden.
+              How deep would you go?
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <Button
+                variant="primary"
+                style={{ ...buttonStyle, backgroundColor: '#0F4A5D', marginRight: '10px' }}
+              >
+                Explore Dark Apps
+              </Button>
+              <Button
+                variant="secondary"
+                style={{ ...buttonStyle, backgroundColor: 'rgba(44, 59, 64, 0.5)' }}
+              >
+                Build in the Dark
+              </Button>
+            </motion.div>
+            <motion.div
+              style={chainContainerStyle}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
+              {chainImages.map((chain, index) => (
+                <motion.img
+                  key={index}
+                  src={chain}
+                  alt={`Chain ${index + 1}`}
+                  style={chainStyle(index, chainImages.length)}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                />
+              ))}
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default HeroPage;
