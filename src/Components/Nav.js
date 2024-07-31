@@ -57,7 +57,7 @@ const NavBar = () => {
   };
 
   const toggleIconStyle = {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   };
 
   const handleNavClick = (navItem) => {
